@@ -1,0 +1,16 @@
+version: "3.2"
+services:
+  mqttBroker:
+    image: eclipse-mosquitto
+    ports:
+      - 1883:1883
+      - 9001:9001
+    volumes:
+      - ./configs/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ./data:/mosquitto/data
+    networks:
+      - mqtt_network
+
+networks:
+  mqtt_network:
+    driver: bridge
